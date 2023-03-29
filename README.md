@@ -14,6 +14,11 @@ pip install poetry
 poetry install
 ```
 
+## Run API
+```
+python run.py
+```
+
 ## Tests
 
 ```
