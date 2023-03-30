@@ -1,7 +1,6 @@
-# worst-movies-api
+# Worst Movies Api
 
-API Responsible for evaluating films nominated as worst film at the Golden Raspberry Awards
-
+API Responsible for evaluating films nominated as the worst movie at the Golden Raspberry Awards
 
 ## Requirements
 
