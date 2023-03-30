@@ -1,10 +1,12 @@
 from flask import Blueprint, jsonify
 from sqlalchemy import func
 
-from .models import Movie, MovieProducer, Producer, db
-from .utils import get_producer_win_intervals
+from app.errors import errors
+from app.models import Movie, MovieProducer, Producer, db
+from app.utils import get_producer_win_intervals
 
 api = Blueprint("main", __name__)
+api.register_blueprint(errors)
 
 
 @api.route("/", methods=["GET"])
