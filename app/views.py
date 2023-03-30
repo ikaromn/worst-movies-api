@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, current_app, jsonify, url_for
 from sqlalchemy import func
 
 from app.errors import errors
@@ -9,9 +9,14 @@ api = Blueprint("main", __name__)
 api.register_blueprint(errors)
 
 
-@api.route("/", methods=["GET"])
+@api.route("/")
 def home():
-    return {"Hello": "World"}
+    routes_dict = {}
+    for rule in current_app.url_map.iter_rules():
+        if rule.endpoint != "static" and rule.endpoint.startswith(f"{api.name}."):
+            endpoint = rule.endpoint.replace(f"{api.name}.", "")
+            routes_dict[endpoint] = url_for(rule.endpoint, _external=True)
+    return jsonify(routes_dict)
 
 
 @api.route("/prize-ranges/", methods=["GET"])

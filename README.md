@@ -19,10 +19,8 @@ python run.py
 ```
 
 ## Endpoint
-```
-GET http://127.0.0.1/prize-ranges/
+`GET http://127.0.0.1/prize-ranges/`
 
-```
 Response:
 ```
 {
